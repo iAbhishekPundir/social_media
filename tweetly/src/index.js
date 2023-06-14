@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { makeServer } from "./server";
+
+// Call make Server
+makeServer();
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
