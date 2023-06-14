@@ -1,0 +1,60 @@
+body {
+    background-color: var(--lynx-white-color);
+    font-family: var(--font);
+    color: var(--black-color);
+}
+:root {
+    --primary-color: #FF3B30;
+    --secondary-color: #FFF6EA;
+    --action-color: #3B82F6;
+    --grey-color: #9a9a9a;
+    --black-color: #282828;
+    --white-color: #fff;
+    --lynx-white-color: #f7f7f7;
+    --violet-color: #5348C7;
+    --lynx-gray-color: #C5C5C5;
+    --font: 'Open Sans', sans-serif;
+    --xxl-size: 4rem;
+    --xl-size: 2.5rem;
+    --l-size: 2rem;
+    --m-size: 1.5rem;
+    --s-size: 1rem;
+    --xs-size: 0.5rem;
+    --xl-font: 3rem;
+    --light-weight: 300;
+    --regular-weight: 400;
+    --semibold-weight: 600;
+    --bold-weight: 700;
+    --black-weight: 900;
+}
+
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+.flex-row {
+    flex-flow: row wrap;
+}
+.flex {
+    display: flex;
+}
+.w-full {
+    width: 100%;
+}
+.h-full {
+    min-height: 100vh;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+::-webkit-scrollbar {
+    display: none;
+}
