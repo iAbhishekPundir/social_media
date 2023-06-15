@@ -1,23 +1,11 @@
 import React, { useState } from "react";
-// import { NavLink, useLocation } from "react-router-dom";
 import "./Login.css";
-// import { AuthState } from "../../Contexts/Auth/AuthContext";
-import { useNavigate } from "react-router";
 import { VscEyeClosed, VscEye } from "react-icons/vsc";
-// import { DataState } from "../../Contexts/Data/DataContext.js";
-// import {
-//   guestLoginhandler,
-//   loginHandler,
-// } from "../../Services/AuthService/AuthService";
+
 export const Login = () => {
-//   const { setIsLoggedIn } = AuthState();
-//   const location = useLocation();
-//   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [toggleEye, setToggleEye] = useState(false);
-//   const { dispatch } = DataState();
-
   return (
     <div>
       <form
@@ -25,7 +13,22 @@ export const Login = () => {
         onSubmit={(e) => e.preventDefault()}
       >
         <div className="login-form-innerContainer">
-          <h1>Sign In</h1>
+          <div className="welcome-div">
+            <span className="logo-div">
+              <img
+                src="https://cdn1.iconfinder.com/data/icons/animals-88/64/Bird_1-64.png"
+                alt="logo"
+              />
+            </span>
+            <span>
+              <h1>Welcome to Tweetly</h1>
+              <p>connecting people...</p>
+            </span>
+          </div>
+          <div className="sign-in-msg">
+          <h2>Sign In</h2>
+          </div>
+         
           <div className="">
             <div className="login-email">
               <input
@@ -57,39 +60,9 @@ export const Login = () => {
             </div>
           </div>
 
-          <button
-            className="login-btn"
-            // onClick={() =>
-            //   loginHandler(
-            //     email,
-            //     password,
-            //     setIsLoggedIn,
-            //     navigate,
-            //     dispatch,
-            //     location
-            //   )
-            // }
-          >
-            Login
-          </button>
+          <button className="login-btn">Login</button>
 
-          <button
-            className="login-guest-btn"
-            // onClick={() =>
-            //   guestLoginhandler(
-            //     setEmail,
-            //     setPassword,
-            //     setIsLoggedIn,
-            //     dispatch,
-            //     location,
-            //     navigate
-            //   )
-            // }
-          >
-            Login as Guest
-          </button>
-
-          {/* <NavLink to="/signup" className="no-account-nav">Don't have account?</NavLink> */}
+          <button className="login-guest-btn">Login as Guest</button>
         </div>
       </form>
     </div>
