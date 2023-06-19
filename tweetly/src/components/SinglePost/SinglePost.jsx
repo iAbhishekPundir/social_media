@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 const SinglePost = () => {
   return (
-    <Card sx={{ margin: 5 }}>
+    <Card sx={{ margin: 4 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
@@ -20,19 +20,19 @@ const SinglePost = () => {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
-            <MoreVert onClick={()=> alert("Edit & Delete")}/>
+          <IconButton aria-label="settings" onClick={()=> alert("Edit & Delete")}>
+            <MoreVert />
           </IconButton>
         }
         title="John Doe"
         subheader="September 14, 2022"
       />
-      <CardMedia
+      {/* <CardMedia
         component="img"
         height="20%"
         image="https://images.pexels.com/photos/4534200/pexels-photo-4534200.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         alt="Paella dish"
-      />
+      /> */}
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           This impressive paella is a perfect party dish and a fun meal to cook
@@ -41,19 +41,20 @@ const SinglePost = () => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites" onClick={()=> alert("favourite icon clicked")}>
           <Checkbox
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite sx={{ color: "red" }} />}
           />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton aria-label="bookmark" onClick={()=> alert("bookmark icon clicked")}>
         <Checkbox
             icon={<BookmarkBorder />}
             checkedIcon={<Bookmark sx={{ color: "#4ade80" }} />}
           />
         </IconButton>
       </CardActions>
+      
     </Card>
   );
 };

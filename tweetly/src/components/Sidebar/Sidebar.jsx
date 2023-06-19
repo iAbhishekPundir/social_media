@@ -19,8 +19,15 @@ import {
     Switch,
   } from "@mui/material";
   import React from "react";
+import { AuthState } from "../../Contexts/Auth/AuthContext";
   
   const Sidebar = ({mode,setMode}) => {
+    const { setIsLoggedIn } = AuthState();
+
+    const logOutHandler = () => {
+      setIsLoggedIn(null);
+      localStorage.clear();
+    };
     return (
       <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
         <Box position="fixed">
@@ -58,7 +65,7 @@ import {
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton component="a" href="#simple-list" onClick={logOutHandler}>
                 <ListItemIcon>
                   <Logout />
                 </ListItemIcon>

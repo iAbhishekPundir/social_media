@@ -24,6 +24,7 @@ export const users = [
     username: "abhishekpundir",
     email: "abhishekpundir@gmail.com",
     password: "pundir",
+    bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
