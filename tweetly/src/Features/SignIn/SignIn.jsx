@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState} from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,7 +14,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ButtonGroup } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { NavLink, useLocation,  } from "react-router-dom";
+import { AuthState } from "../../Contexts/Auth/AuthContext";
+import { loginHandler, guestLoginHandler } from "../../Services/Auth/AuthService";
 
 function Copyright(props) {
   return (
@@ -35,15 +38,23 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get("username"),
-      password: data.get("password"),
-    });
-  };
+  const { setIsLoggedIn } = AuthState();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  // const { dispatch }
 
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   setUsername(data.username);
+  //   setPassword(data.password);
+  //   // console.log({
+  //   //   username: data.get("username"),
+  //   //   password: data.get("password"),
+  //   // });
+  // };
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -68,7 +79,7 @@ export default function SignIn() {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={(e) => e.preventDefault()}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -78,19 +89,23 @@ export default function SignIn() {
               fullWidth
               id="username"
               label="Username"
-              name="username"
-              // autoComplete="email"
-              autoFocus
+              type="text"
+              value={username}
+              onChange={(e)=> setUsername(e.target.value)}
+              autoComplete=""
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
               id="password"
-              autoComplete="current-password"
+              label="Password"
+              // name="password"
+              value={password}
+              type="password"
+              onChange={(e)=> setPassword(e.target.value)}
+              autoComplete=""
+              
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -98,10 +113,20 @@ export default function SignIn() {
             />
             <br />
             <Container component="main" maxWidth="xs" sx={{mt:2}}>
-              <Button variant="contained" fullWidth sx={{mb:2}}>
+              <Button variant="contained" fullWidth sx={{mb:2}}
+              onClick={()=> loginHandler(username, password, setIsLoggedIn, navigate, location) }
+              >
                 Sign In
               </Button>
-              <Button variant="contained" fullWidth sx={{mb:1}}>
+              <Button variant="contained" fullWidth sx={{mb:1}}
+              onClick={()=> 
+                guestLoginHandler(  setPassword,
+                  setIsLoggedIn,
+                  setUsername,
+                  navigate,
+                  location
+                 )}
+              >
                 Sign In As Guest
               </Button>
             </Container>
