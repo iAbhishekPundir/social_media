@@ -18,6 +18,8 @@ export const MainContainer = ({children}) => {
   });
   return (
     <>
+    <ThemeProvider theme={darkTheme}>
+    <Box bgcolor={"background.default"} color={"text.primary"}>
     <RequiresAuth>
     
       <Navbar/>
@@ -31,6 +33,8 @@ export const MainContainer = ({children}) => {
        
       </Stack>
     </RequiresAuth>
+    </Box>
+    </ThemeProvider>
     </>
   )
 }
