@@ -19,8 +19,9 @@ const StyledToolbar = styled(Toolbar)({
 const Search = styled("div")(({ theme }) => ({
   backgroundColor: "white",
   padding: "0 10px",
+  marginRight:"14px",
   borderRadius: theme.shape.borderRadius,
-  width: "20%",
+  width: "21.7%",
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
