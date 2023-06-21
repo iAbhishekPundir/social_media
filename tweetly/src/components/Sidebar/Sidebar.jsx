@@ -33,7 +33,7 @@ import { AuthState } from "../../Contexts/Auth/AuthContext";
         <Box position="fixed">
           <List>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#home">
+              <ListItemButton >
                 <ListItemIcon>
                   <Home />
                 </ListItemIcon>
@@ -41,7 +41,7 @@ import { AuthState } from "../../Contexts/Auth/AuthContext";
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton >
                 <ListItemIcon>
                   <Explore />
                 </ListItemIcon>
@@ -49,7 +49,7 @@ import { AuthState } from "../../Contexts/Auth/AuthContext";
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton >
                 <ListItemIcon>
                   <Bookmark />
                 </ListItemIcon>
@@ -57,7 +57,7 @@ import { AuthState } from "../../Contexts/Auth/AuthContext";
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton >
                 <ListItemIcon>
                   <AccountBox />
                 </ListItemIcon>
@@ -65,7 +65,7 @@ import { AuthState } from "../../Contexts/Auth/AuthContext";
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list" onClick={logOutHandler}>
+              <ListItemButton onClick={logOutHandler}>
                 <ListItemIcon>
                   <Logout />
                 </ListItemIcon>
@@ -73,7 +73,7 @@ import { AuthState } from "../../Contexts/Auth/AuthContext";
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-              <ListItemButton component="a" href="#simple-list">
+              <ListItemButton >
                 <ListItemIcon>
                   <ModeNight />
                 </ListItemIcon>
