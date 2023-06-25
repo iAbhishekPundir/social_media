@@ -19,30 +19,12 @@ const StyledToolbar = styled(Toolbar)({
 const Search = styled("div")(({ theme }) => ({
   backgroundColor: "white",
   padding: "0 10px",
-  marginRight:"14px",
+  marginRight:"38px",
   borderRadius: theme.shape.borderRadius,
-  width: "21.7%",
+  width: "22%",
 }));
 
-const Icons = styled(Box)(({ theme }) => ({
-  display: "none",
-  alignItems: "center",
-  gap: "20px",
-  [theme.breakpoints.up("sm")]: {
-    display: "flex",
-  },
-}));
-
-const UserBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  [theme.breakpoints.up("sm")]: {
-    display: "none",
-  },
-}));
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -57,24 +39,6 @@ const Navbar = () => {
           <InputBase placeholder="search people..." />
         </Search>
       </StyledToolbar>
-      <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        open={open}
-        onClose={(e) => setOpen(false)}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-      >
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My account</MenuItem>
-        <MenuItem>Logout</MenuItem>
-      </Menu>
     </AppBar>
   );
 };
