@@ -12,7 +12,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from "react-router-dom";
+import { signupUser } from "../../Services/Auth/AuthServices";
+import { useState } from "react";
+import { useAuth } from "../../Contexts/Auth/AuthContext";
+import { useData } from "../../Contexts/Data/DataContext";
+import { toast } from "react-hot-toast";
 
 function Copyright(props) {
   return (
@@ -28,14 +33,41 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-    });
+
+  const {dataDispatch}=useData()
+
+  const [signUpDetails, setSignUpDetails] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    password: "",
+    profilePic: "https://www.pngmart.com/files/22/Charizard-Pokemon-Download-PNG-Image.png",
+    followers:[],
+    following:[],
+    bookmarks:[],
+    // userHandler:this.firstName
+  });
+  const navigate = useNavigate();
+  const {setIsLoggedIn}=useAuth()
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      console.log(name, value);
+      setSignUpDetails((prev) => ({ ...prev, [name]: value }));
+    };
+    const { firstName, lastName, username, password } = signUpDetails;
+  const handleSignUp = () => {
+    if ((firstName, lastName, username, password)) {
+      console.log("inside handleSignup");
+      signupUser(signUpDetails, navigate,setIsLoggedIn,dataDispatch);
+      console.log("success");
+      setTimeout(() => {
+        toast.success('Signup successful!');
+      }, 200);
+    }
   };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  // };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -59,16 +91,42 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  autoComplete="given-name"
+                  autoComplete="given-firstName"
+                  name="firstName"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  value={firstName}
+                  onChange={handleChange}
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="given-surName"
+                  name="lastName"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  onChange={handleChange}
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="given-email"
                   name="username"
                   required
                   fullWidth
                   id="username"
-                  label="Username"
+                  label="Email"
+                  onChange={handleChange}
                   autoFocus
                 />
               </Grid>
@@ -80,26 +138,17 @@ export default function SignUp() {
                   label="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Confirm Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  onChange={handleChange}
+                  autoFocus
                 />
               </Grid>
             </Grid>
             <Button
-              type="submit"
+              // type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 2, mb: 2 }}
+              onClick={handleSignUp}
             >
               Sign Up
             </Button>
