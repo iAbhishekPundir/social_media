@@ -14,10 +14,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ButtonGroup } from "@mui/material";
-import { useNavigate } from "react-router";
-import { NavLink, useLocation,  } from "react-router-dom";
-import { AuthState } from "../../Contexts/Auth/AuthContext";
-import { loginHandler, guestLoginHandler } from "../../Services/Auth/AuthService";
+import { toast } from "react-toastify";
+import { NavLink, useLocation, useNavigate  } from "react-router-dom";
+import { useAuth} from "../../Contexts/Auth/AuthContext";
+import { loginUser } from "../../Services/Auth/AuthServices";
 
 function Copyright(props) {
   return (
@@ -38,23 +38,31 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const { setIsLoggedIn } = AuthState();
-  const location = useLocation();
+  const [loginDetails, setLoginDetails] = useState({
+    username: "",
+    password: "",
+  });
+  const { setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  // const { dispatch }
+  const { username, password } = loginDetails;
+  const handleLogin = () => {
+    if (username && password) {
+      loginUser({ username, password }, navigate, setIsLoggedIn);
+      setTimeout(() => {
+        toast.success('Login successful!');
+      }, 200);
+    }
+  };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   setUsername(data.username);
-  //   setPassword(data.password);
-  //   // console.log({
-  //   //   username: data.get("username"),
-  //   //   password: data.get("password"),
-  //   // });
-  // };
+  const handleGuestLogin = () => {
+    const creds = { username: "abhishekpundir@gmail.com", password: "pundir" };
+    setLoginDetails(creds);
+    loginUser(creds, navigate, setIsLoggedIn);
+    setTimeout(() => {
+      toast.success('Login successful!');
+    }, 200);
+    
+  };
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -91,7 +99,7 @@ export default function SignIn() {
               label="Username"
               type="text"
               value={username}
-              onChange={(e)=> setUsername(e.target.value)}
+              onChange={(e)=>  setLoginDetails({ ...loginDetails, username: e.target.value })}
               autoComplete=""
             />
             <TextField
@@ -103,7 +111,9 @@ export default function SignIn() {
               // name="password"
               value={password}
               type="password"
-              onChange={(e)=> setPassword(e.target.value)}
+              onChange={(e) =>
+                setLoginDetails({ ...loginDetails, password: e.target.value })
+              }
               autoComplete=""
               
             />
@@ -114,18 +124,12 @@ export default function SignIn() {
             <br />
             <Container component="main" maxWidth="xs" sx={{mt:2}}>
               <Button variant="contained" fullWidth sx={{mb:2}}
-              onClick={()=> loginHandler(username, password, setIsLoggedIn, navigate, location) }
+               onClick={handleLogin}
               >
                 Sign In
               </Button>
               <Button variant="contained" fullWidth sx={{mb:1}}
-              onClick={()=> 
-                guestLoginHandler(  setPassword,
-                  setIsLoggedIn,
-                  setUsername,
-                  navigate,
-                  location
-                 )}
+              onClick={handleGuestLogin}
               >
                 Sign In As Guest
               </Button>
