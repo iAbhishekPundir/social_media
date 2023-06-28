@@ -1,6 +1,6 @@
 import { Box, Stack, Skeleton } from "@mui/material";
 import React, { useState } from "react";
-import SinglePost from "../SinglePost/SinglePost";
+import {SinglePost} from "../SinglePost/SinglePost";
 
 
 const UserFeed = () => {
