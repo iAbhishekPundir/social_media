@@ -1,15 +1,12 @@
 import { Twitter } from "@mui/icons-material";
 import {
   AppBar,
-  Box,
-  InputBase,
-  Menu,
-  MenuItem,
   styled,
   Toolbar,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useData } from "../../Contexts/Data/DataContext";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -25,6 +22,7 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const Navbar = () => {
+  const {userSearch, setUserSearch} = useData();
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -35,9 +33,9 @@ const Navbar = () => {
           Tweetly
         </Typography>
         <Twitter sx={{ display: { xs: "block", sm: "none" } }} />
-        <Search>
-          <InputBase placeholder="search people..." />
-        </Search>
+        <div>
+        <input type="search" className="searchInput" placeholder="Search here " onChange={(e) => setUserSearch(e.target.value)} value={userSearch}  />
+        </div>
       </StyledToolbar>
     </AppBar>
   );
