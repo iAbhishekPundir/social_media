@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { toast } from "react-toastify";
 export const loginUser = async (creds, navigate,setIsLoggedIn) => {
   try {
     const {
@@ -13,6 +13,9 @@ export const loginUser = async (creds, navigate,setIsLoggedIn) => {
       localStorage.setItem("socialUser", JSON.stringify(foundUser));
       setIsLoggedIn(true)
       navigate("/");
+      setTimeout(() => {
+        toast.success('Login successful!');
+      }, 200);
     }
   } catch (error) {
     console.log(error);

@@ -1,14 +1,19 @@
-/* * {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-decoration: none;
+  list-style-type: none;
+
+}
+body::-webkit-scrollbar {
+  width: 8px;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: #f8f8f8;
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 5px;
 }
-#toast-container > .toast {
-  width: 1200px;
-} */
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
+}

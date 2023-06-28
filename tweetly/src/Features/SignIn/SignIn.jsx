@@ -48,9 +48,9 @@ export default function SignIn() {
   const handleLogin = () => {
     if (username && password) {
       loginUser({ username, password }, navigate, setIsLoggedIn);
-      setTimeout(() => {
-        toast.success('Login successful!');
-      }, 200);
+      // setTimeout(() => {
+      //   toast.success('Login successful!');
+      // }, 200);
     }
   };
 
@@ -58,10 +58,6 @@ export default function SignIn() {
     const creds = { username: "abhishekpundir@gmail.com", password: "pundir" };
     setLoginDetails(creds);
     loginUser(creds, navigate, setIsLoggedIn);
-    setTimeout(() => {
-      toast.success('Login successful!');
-    }, 200);
-    
   };
   return (
     <ThemeProvider theme={defaultTheme}>

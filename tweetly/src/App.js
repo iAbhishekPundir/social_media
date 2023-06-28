@@ -11,6 +11,9 @@ import { MainContainer } from "./components/MainContainer/MainContainer";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useData } from "./Contexts/Data/DataContext";
+import { Home } from "./Features/Home/Home";
+import { AnyProfile } from "./Features/Profile/AnyProfile";
+
 function App() {
   const {isLoading} = useData();
   return (
@@ -23,7 +26,7 @@ function App() {
         path="/"
         element={
           <MainContainer>
-            <UserFeed />
+            <Home/>
           </MainContainer>
         }
       />
@@ -56,7 +59,7 @@ function App() {
         path="/profile/:userHandler"
         element={
           <MainContainer>
-            <Profile />
+            <AnyProfile/>
           </MainContainer>
         }
       />
