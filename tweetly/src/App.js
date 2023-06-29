@@ -1,5 +1,6 @@
 // import Mockman from "mockman-js";
 import { useState } from "react";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import UserFeed from "./components/UserFeed/UserFeed";
 import SignIn from "./Features/SignIn/SignIn";
