@@ -114,9 +114,9 @@ export const SinglePost = ({ data, showComment }) => {
   };
 
   const handleShare = () => {
-    navigator.clipboard.writeText(
-      `https://speedysocial.netlify.app/post/${data?.id}`
-    );
+    // navigator.clipboard.writeText(
+    //   `https://tweetly.netlify.app/post/${data?.id}`
+    // );
 
     toast.success("Copied To Clipboard");
   };
