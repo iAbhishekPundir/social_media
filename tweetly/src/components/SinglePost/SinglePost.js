@@ -1,6 +1,6 @@
 import React from "react";
 import "./SinglePost.css";
-// import profile1 from "../../Assets/profile1.png";
+import profile1 from "../../Assets/profile1.png";
 import {
   AiFillHeart,
   AiOutlineDelete,
@@ -25,6 +25,7 @@ import { useData } from "../../Contexts/Data/DataContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const SinglePost = ({ data, showComment }) => {
   const [menuBtn, setMenuBtn] = useState(false);
@@ -89,7 +90,6 @@ export const SinglePost = ({ data, showComment }) => {
   };
 
   const handleDeleteComment = (commentId, commentData) => {
-    // console.log(_id, commentText, socialToken, dataDispatch);
     deleteCommentHandle(
       data?._id,
       commentId,
@@ -129,9 +129,14 @@ export const SinglePost = ({ data, showComment }) => {
     setCommentId(data._id);
     setCommentToggle(!commentToggle);
   };
-
+  const  handleBack=()=>{
+    setBtnAddPost(false)
+    navigate("/")
+  }
+  
   const userDetails = users?.find((el) => el.username === data.username);
-  // console.log(userDetails, "aaaa");
+  const formattedCreatedAt = new Date(data?.createdAt).toLocaleDateString();
+  const createTime= new Date(data?.createdAt).toLocaleTimeString();
 
 
 
@@ -140,6 +145,12 @@ export const SinglePost = ({ data, showComment }) => {
       <div className="singlepost-innerContainer">
         <div className="flex--singlepost-justify">
           <div className="flex--singlepost">
+          {showComment && <div>
+            <IoMdArrowRoundBack
+              className="logo-back-addPost"
+              onClick={handleBack}
+            />
+          </div>}
             <div className="flex-uploadimgg">
               <img
                 src={userDetails?.profilePic}
@@ -150,16 +161,18 @@ export const SinglePost = ({ data, showComment }) => {
             </div>
 
             <div className="flex-edit-delete">
-              <p className="single-profile-userName">
+              <span className="single-profile-userName pointer" onClick={() => handleClick(userDetails?.userHandler)}>
                 {userDetails?.firstName} {userDetails?.lastName}
                 
-              </p>
-              <p className="single-profile-userId">@{userDetails?.userHandler}</p>
-              <p className="single-profile-date-time">20/06/2023 16:30</p>
+              </span>
+              <p className="single-profile-userId pointer" onClick={() => handleClick(userDetails?.userHandler)}>@{userDetails?.userHandler}</p>
+              <p className="single-profile-date-time ">{formattedCreatedAt} {createTime}</p>
+              {/* <p>Created At: {formattedCreatedAt} {createTime}</p> */}
+      {/* <p>Updated At: {formattedUpdatedAt} {updateTime}</p> */}
             </div>
           </div>
           <div>
-            <div className="setting">
+            {socialUser.username===userDetails?.username && <div className="setting">
               {menuBtn ? (
                 <RxCross2
                   onClick={() => setMenuBtn(!menuBtn)}
@@ -171,7 +184,7 @@ export const SinglePost = ({ data, showComment }) => {
                   className="setting-icon"
                 />
               )}
-            </div>
+            </div>}
             {menuBtn && (
               <div className="btn-postEdit">
                 <button
@@ -248,24 +261,7 @@ export const SinglePost = ({ data, showComment }) => {
             <BiShareAlt />
           </p>
         </div>
-        {/* {commentToggle &&   <div className="comment-box positionComment">
-          <img
-            src={profile1}
-            alt="img1"
-            className="single-profile-photo-comment"
-          />
-       <div className="inner-comment-box">
-            <input
-              placeholder="write your comment"
-              className="single-profile-input-ccomment"
-              onChange={(e) => setCommentText(e.target.value)}
-              value={commentText}
-            />
-            <button className="post-btn-comment" onClick={handleAddComment}>
-              POST
-            </button>
-          </div>
-        </div>} */}
+        {!showComment && <p className="allComments flex  pointer" onClick={() => handleProductDetailClick(data?._id)} >view {data?.comments?.length} comments</p>}
 
         {showComment && (
           <div>
@@ -274,8 +270,6 @@ export const SinglePost = ({ data, showComment }) => {
                 (user) => user?.username === comment?.username
               );
               const deleteOnlyYoursCmnt=socialUser?.username===comment?.username
-
-              {/* console.log({ currentUser }); */}
               return (
                 <div className="comments-added">
                   <img

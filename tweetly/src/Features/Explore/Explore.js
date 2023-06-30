@@ -12,6 +12,7 @@ export const Explore = () => {
       setIsLoading(false)
     }, 300)
   },[])
+
   return (
     <div>
       {
