@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import { useData } from "./Contexts/Data/DataContext";
 import { Home } from "./Features/Home/Home";
 import { AnyProfile } from "./Features/Profile/AnyProfile";
+import { Loader } from "./components/Loader/Loader";
 
 function App() {
   const {isLoading} = useData();
@@ -21,7 +22,7 @@ function App() {
     <div >
       <ToastContainer position="top-center" autoClose={1100}
       reverseOrder={false}/>
-      {isLoading && <h2>Loading...</h2>}
+      {isLoading && <Loader/>}
     <Routes>
       <Route
         path="/"
