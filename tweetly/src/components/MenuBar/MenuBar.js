@@ -31,7 +31,7 @@ export const MenuBar = () => {
   const getActiveStyle = ({ isActive }) => {
     if (isActive) {
       return {
-        color: isActive && " #8e44ad ",
+        color: isActive && " #1976d2 ",
         borderRadius: isActive && "0.5rem",
       };
     }
