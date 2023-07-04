@@ -75,7 +75,7 @@ export const Profile = () => {
               </div>
             </div>
             <div className="margin-top-1">
-              <p>{loggedInUser?.bio}</p>
+              <p className="bio">{loggedInUser?.bio}</p>
             </div>
             <div className="flex space-between margin-top-1 ">
               <span>{profileUserPosts.length} Posts</span>{" "}
