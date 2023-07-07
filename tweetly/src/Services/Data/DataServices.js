@@ -1,22 +1,23 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
-export const getPostData = async (dataDispatch,setIsLoading) => {
+export const getPostData = async (dataDispatch, setIsLoading) => {
   try {
     const {
       status,
       data: { posts },
-    } = await axios.get("/api/posts");
+    } = await axios.get(`/api/posts`);
     if (status === 200 || status === 201) {
       dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
     console.log(error);
-  }finally{
-    setIsLoading(false)
+  } finally {
+    setIsLoading(false);
   }
 };
 
-export const getUserData = async (dataDispatch,setIsLoading) => {
+export const getUserData = async (dataDispatch, setIsLoading) => {
   try {
     const {
       status,
@@ -27,8 +28,8 @@ export const getUserData = async (dataDispatch,setIsLoading) => {
     }
   } catch (error) {
     console.log(error);
-  }finally{
-    setIsLoading(false)
+  } finally {
+    setIsLoading(false);
   }
 };
 export const editUserHandler = async (userData, socialToken, dataDispatch) => {
@@ -92,7 +93,6 @@ export const getDislikeData = async (_id, dataDispatch, sociaToken) => {
       }
     );
     if (status === 200 || status === 201) {
-      console.log(posts, "postttt");
       dataDispatch({ type: "ALL_POST_DATA", payload: posts });
     }
   } catch (error) {
@@ -101,10 +101,6 @@ export const getDislikeData = async (_id, dataDispatch, sociaToken) => {
 };
 
 export const getBookMark = async (dataDispatch, sociaToken, _id, username) => {
-  console.log({  dataDispatch,
-    sociaToken,
-    _id,
-    username})
   try {
     const {
       status,
@@ -119,7 +115,6 @@ export const getBookMark = async (dataDispatch, sociaToken, _id, username) => {
       }
     );
     if (status === 200 || status === 201) {
-      // console.log(bookmarks)
       dataDispatch({ type: "BOOKMARK", payload: { username, bookmarks } });
     }
   } catch (error) {
@@ -133,10 +128,6 @@ export const getRemoveBookmarkData = async (
   _id,
   username
 ) => {
-  console.log({  dataDispatch,
-    sociaToken,
-    _id,
-    username})
   try {
     const {
       status,
@@ -150,11 +141,10 @@ export const getRemoveBookmarkData = async (
         },
       }
     );
-    // console.log(bookmarks)
+
     if (status === 200 || status === 201) {
       dataDispatch({ type: "BOOKMARK", payload: { username, bookmarks } });
     }
-    // console.log(resp);
   } catch (error) {
     console.log(error);
   }
@@ -188,15 +178,12 @@ export const getFollowHandler = async (
       }
     );
     if (status === 200 || status === 201) {
-      // dataDispatch({ type: "ADD_FOLLOWING", payload: { user: user } });
       dataDispatch({ type: "FOLLOWING_OPERATIONS", payload: { user: user } });
       dataDispatch({
         type: "ADD_FOLLOWER",
         payload: { followUser: followUser },
       });
-      // localStorage.setItem("socialUser", JSON.stringify(user));
     }
-    // console.log(followUser);
   } catch (error) {
     console.log(error);
   }
@@ -221,14 +208,11 @@ export const getUnfollowHandler = async (
       }
     );
     if (status === 200 || status === 201) {
-      // dataDispatch({ type: "REMOVE_FOLLOWER", payload: { user: user } });
- 
-      dataDispatch({ type: "FOLLOWING_OPERATIONS", payload: { user:user} });
+      dataDispatch({ type: "FOLLOWING_OPERATIONS", payload: { user: user } });
       dataDispatch({
         type: "REMOVE_FOLLOWER",
         payload: { unfollowedUser: followUser },
       });
-      // localStorage.setItem("socialUser", JSON.stringify(user));
     }
   } catch (error) {
     console.log(error);
@@ -254,7 +238,6 @@ export const createPostHandler = async (
       }
     );
     if (status === 200 || status === 201) {
-      // console.log({posts});
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
   } catch (error) {
@@ -263,14 +246,12 @@ export const createPostHandler = async (
 };
 
 export const getPostDetails = async (postId, dataDispatch) => {
-
   try {
     const {
       status,
       data: { post },
     } = await axios.get(`/api/posts/${postId}`);
     if (status === 200 || status === 201) {
-      // console.log(post);
       dataDispatch({ type: "POST_DETAILS", payload: post });
     }
   } catch (error) {
@@ -284,8 +265,6 @@ export const addCommentHandle = async (
   socialToken,
   dataDispatch
 ) => {
-
-
   try {
     const {
       status,
@@ -303,8 +282,8 @@ export const addCommentHandle = async (
     );
 
     if (status === 200 || status === 201) {
-      // console.log(posts);
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
+      toast.success("Comment Added Successfully!")
     }
   } catch (error) {
     console.log(error);
@@ -312,20 +291,19 @@ export const addCommentHandle = async (
 };
 
 export const deleteCommentHandle = async (
-  postId,commentId,
+  postId,
+  commentId,
   commentData,
   socialToken,
   dataDispatch
 ) => {
-
-
   try {
     const {
       status,
       data: { posts },
     } = await axios.delete(
       `/api/comments/delete/${postId}/${commentId}`,
-    
+
       {
         headers: {
           authorization: socialToken,
@@ -333,9 +311,9 @@ export const deleteCommentHandle = async (
       }
     );
 
-    // console.log(posts);
     if (status === 200 || status === 201) {
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
+      toast.success("Comment Deleted Successfully!")
     }
   } catch (error) {
     console.log(error);
@@ -353,7 +331,6 @@ export const deletePostHandle = async (_id, dataDispatch, socialToken) => {
       },
     });
     if (status === 200 || status === 201) {
-      // console.log(posts);
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
   } catch (error) {
@@ -361,20 +338,19 @@ export const deletePostHandle = async (_id, dataDispatch, socialToken) => {
   }
 };
 
-export const editPostHandler= async (
+export const editPostHandler = async (
   postId,
   postDetails,
   dataDispatch,
   socialToken
 ) => {
-  // console.log(postDetails,postId);
   try {
     const {
       status,
       data: { posts },
     } = await axios.post(
       `/api/posts/edit/${postId}`,
-      {postData:postDetails},
+      { postData: postDetails },
       {
         headers: {
           authorization: socialToken,
@@ -382,10 +358,8 @@ export const editPostHandler= async (
       }
     );
     if (status === 200 || status === 201) {
-      // console.log(posts, "posssssssssssss");
       dataDispatch({ type: "POST_OPERATIONS", payload: posts });
     }
-    // console.log(resp)
   } catch (error) {
     console.log(error);
   }
