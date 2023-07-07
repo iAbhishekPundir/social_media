@@ -48,9 +48,6 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
               <p>{foundUser?.username}</p>
             </div>
             <div>
-              {/* <button className="profile-edit-btn">Edit</button> */}
-           
-
               {
                 loggedInUser?.following?.some(el => el.username === foundUser?.username)
                 ?
@@ -69,7 +66,7 @@ const foundUser = users?.find(el => el.userHandler === userHandler);
             <span>{foundUser?.following.length} Following</span>
           </div>
           <div className="profile-link">
-            <a href="https://arjunsinghportfolio.netlify.app" target="_blank" rel="noreferrer">https://arjunsinghportfolio.netlify.app/</a>
+            <a href="https://abhishekpundir.netlify.app/" target="_blank" rel="noreferrer">know more about me...</a>
           </div>
         </div>
       </div>
