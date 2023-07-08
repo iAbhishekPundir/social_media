@@ -23,7 +23,6 @@ export const Home = () => {
 
   const socialUser = JSON.parse(localStorage.getItem("socialUser"));
   const loggedInUser = users?.find((el) => el.username === socialUser.username);
-
   const loggedInUserPosts = posts?.filter(
     (post) => post?.username === loggedInUser?.username
   );
@@ -129,7 +128,7 @@ export const Home = () => {
         <p
           className="flex justify-center trendingPhotosHeading"
         >
-          <BsFire /> Trending posts
+        Trending posts
         </p>
       )}
       {postsType === "latest" && (

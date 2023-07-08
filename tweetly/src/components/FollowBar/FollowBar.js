@@ -35,7 +35,7 @@ return (
           <li className="followBar-list-item" key={data._id}>
             <div className="profile-follow">
               <img
-                src={data.profilePic}
+                src={data?.profilePic}
                 alt="profile1"
                 className="profileImg"
                 onClick={() => handleClick(data.userHandler)}
@@ -45,7 +45,7 @@ return (
                   className="user-follow-name"
                   onClick={() => handleClick(data.userHandler)}
                 >
-                  {data.firstName} {data.lastName}
+                  {data?.firstName} {data?.lastName}
                 </p>
                 <span
                   className="userId"

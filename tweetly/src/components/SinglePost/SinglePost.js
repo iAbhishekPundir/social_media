@@ -29,7 +29,6 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const SinglePost = ({ data, showComment }) => {
   const [menuBtn, setMenuBtn] = useState(false);
-  // const [commentToggle,setCommentToggle]=useState(false)
   const {
     dataState: { users },
     dataDispatch,
@@ -47,9 +46,7 @@ export const SinglePost = ({ data, showComment }) => {
   const loggedInuser = users?.find(
     ({ username }) => username === socialUser.username
   );
-  // console.log(loggedInuser?.bookmarks)
   const isBookmark = loggedInuser?.bookmarks?.includes(data?._id);
-  // console.log(newBookmark);
   const handleLike = () => {
     getlikeData(data._id, dataDispatch, socialToken);
   };
@@ -64,7 +61,7 @@ export const SinglePost = ({ data, showComment }) => {
 
   const handleClick = (userHandler) => {
     const viewUser = userHandler === socialUser.userHandler;
-    console.log(userHandler,"userHandler")
+
     if (!viewUser) {
       navigate(`/profile/${userHandler}`);
     } else {
@@ -101,7 +98,6 @@ export const SinglePost = ({ data, showComment }) => {
   };
 
   const handleDeletePost = (postId) => {
-    // console.log(postId, dataDispatch, socialToken);
     deletePostHandle(postId, dataDispatch, socialToken);
     setMenuBtn(!menuBtn);
     toast.success("Post Deleted successful!");
@@ -114,9 +110,9 @@ export const SinglePost = ({ data, showComment }) => {
   };
 
   const handleShare = () => {
-    // navigator.clipboard.writeText(
-    //   `https://tweetly.netlify.app/post/${data?.id}`
-    // );
+    navigator.clipboard.writeText(
+      `https://tweetly.netlify.app/post/${data?.id}`
+    );
 
     toast.success("Copied To Clipboard");
   };
@@ -167,8 +163,6 @@ export const SinglePost = ({ data, showComment }) => {
               </span>
               <p className="single-profile-userId pointer" onClick={() => handleClick(userDetails?.userHandler)}>@{userDetails?.userHandler}</p>
               <p className="single-profile-date-time ">{formattedCreatedAt} {createTime}</p>
-              {/* <p>Created At: {formattedCreatedAt} {createTime}</p> */}
-      {/* <p>Updated At: {formattedUpdatedAt} {updateTime}</p> */}
             </div>
           </div>
           <div>
@@ -273,14 +267,14 @@ export const SinglePost = ({ data, showComment }) => {
               return (
                 <div className="comments-added">
                   <img
-                    src={currentUser.profilePic}
+                    src={currentUser?.profilePic}
                     alt="img1"
                     className="single-profile-photo-comment"
                   />
                   <div className="comments-add-by-user">
                     <div className="deleteFlex">
                       <p className="user-name">
-                        {currentUser.firstName} {currentUser.lastName}
+                        {currentUser?.firstName} {currentUser?.lastName}
                       </p>
                   {deleteOnlyYoursCmnt &&    <FaTrash
                         className="delete-icon"

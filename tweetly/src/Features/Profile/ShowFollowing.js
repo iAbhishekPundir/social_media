@@ -22,14 +22,11 @@ export const ShowFollowing = ({ setShowFollowing,foundUser }) => {
   const handleFollow = (_id, socialToken, dataDispatch) => {
     getFollowHandler(_id, socialToken, dataDispatch);
   };
-//   console.log(loggedInUser.following, "llll");
   const handleUnfollow = (followUserId, socialToken, dataDispatch) => {
-    // console.log({ followUserId, socialToken });
     getUnfollowHandler(followUserId, socialToken, dataDispatch);
   };
   const  navigate=useNavigate()
   const handleNavigate=(data)=>{
-    console.log(data)
     if(data!==socialUser.userHandler){
       navigate(`/profile/${data}`)
     }else{

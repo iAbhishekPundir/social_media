@@ -45,21 +45,17 @@ export default function SignUp() {
     followers:[],
     following:[],
     bookmarks:[],
-    // userHandler:this.firstName
   });
   const navigate = useNavigate();
   const {setIsLoggedIn}=useAuth()
     const handleChange = (e) => {
       const { name, value } = e.target;
-      console.log(name, value);
       setSignUpDetails((prev) => ({ ...prev, [name]: value }));
     };
     const { firstName, lastName, username, password } = signUpDetails;
   const handleSignUp = () => {
     if ((firstName, lastName, username, password)) {
-      console.log("inside handleSignup");
       signupUser(signUpDetails, navigate,setIsLoggedIn,dataDispatch);
-      console.log("success");
       setTimeout(() => {
         toast.success('Signup successful!');
       }, 200);

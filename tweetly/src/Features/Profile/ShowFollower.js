@@ -21,7 +21,6 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
   const socialToken = localStorage.getItem("socialToken");
   const  navigate=useNavigate()
   const handleNavigate=(data)=>{
-    console.log(data)
     if(data!==socialUser.userHandler){
       navigate(`/profile/${data}`)
     }else{
@@ -29,18 +28,13 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
     }
     } 
   const handleFollow = (_id, socialToken, dataDispatch) => {
-    console.log({_id, socialToken, dataDispatch})
     getFollowHandler(_id, socialToken, dataDispatch);
   };
-//   console.log(loggedInUser.following, "llll");
   const handleUnfollow = (followUserId, socialToken, dataDispatch) => {
-    console.log({ followUserId, socialToken });
     getUnfollowHandler(followUserId, socialToken, dataDispatch);
   };
   const isFollowing =foundUser.following.find((user) => user.username ===  socialUser.username);
 
-  console.log(loggedInUser.username,"loggedInUser")
-// console.log()
   return (
     <div className="ShowFollowing-mainContainer">
       <div className="ShowFollowing-innerContainer">
@@ -60,7 +54,6 @@ export const ShowFollower = ({ setShowFollowing,foundUser }) => {
         )}
         <div>
           {foundUser?.followers.map((data) =>  {
-          console.log(data.username,"sssssssssss")
           
         return  (
             <div className="followingUser">

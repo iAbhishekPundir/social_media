@@ -19,7 +19,7 @@ export const AddPost = () => {
     dataDispatch,
     setBtnAddPost,
     btnAddPost,
-    setIsLoading
+    setIsLoading,
   } = useData();
 
   const [images, setImages] = useState();
@@ -33,8 +33,6 @@ export const AddPost = () => {
   const addNoteHandler = () => {
     if (postId) {
       if (postDetails.content.length > 0 || postDetails.file) {
-        // console.log(typeof postId);
-        // console.log(postId, "postId", postDetails);
         editPostHandler(postId, postDetails, dataDispatch, socialToken);
         dataDispatch({ type: "EDIT_POST", payload: null });
         setBtnAddPost(!btnAddPost);
@@ -79,10 +77,10 @@ export const AddPost = () => {
     setPostDetails({ ...postDetails, file: "" });
     toast.success("Post Removed!");
   };
-  const  handleBack=()=>{
+  const handleBack = () => {
     dataDispatch({ type: "EDIT_POST", payload: null });
-    setBtnAddPost(!btnAddPost)
-  }
+    setBtnAddPost(!btnAddPost);
+  };
 
   return (
     <div className="AddPost-mainDiv">
@@ -112,7 +110,6 @@ export const AddPost = () => {
                 id="upload"
                 class="input-file"
                 onChange={fileUploadHandle}
-                
               />
               <label for="upload" class="file-label">
                 {/* <BsFillImageFill /> */}
@@ -122,11 +119,7 @@ export const AddPost = () => {
             {postDetails.file && (
               <div className="image-preview-container">
                 <div className="image-preview">
-                  <img
-                    src={postDetails.file}
-                    alt="img2221"
-                  
-                  />
+                  <img src={postDetails.file} alt="img2221" />
                   <button
                     className="image-preview-button"
                     onClick={handleImageRemove}
