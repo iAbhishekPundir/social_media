@@ -22,18 +22,16 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
   const loggedInUser = users?.find((el) => el.username === socialUser.username);
 
   const [updatedProfile, setUpdatedProfile] = useState({
-    profilePic: loggedInUser.profilePic,
-    firstName: loggedInUser.firstName,
-    lastName: loggedInUser.lastName,
-    link: loggedInUser.link,
-    bio: loggedInUser.bio,
+    profilePic: loggedInUser?.profilePic,
+    firstName: loggedInUser?.firstName,
+    lastName: loggedInUser?.lastName,
+    link: loggedInUser?.link,
+    bio: loggedInUser?.bio,
   });
 
   const handleClose = () => {
     setEditBtn(!editBtn);
   };
-
-  //   console.log(loggedInUser)
 
   const avatars = [
     "https://cdn1.iconfinder.com/data/icons/facely-metapeople-3d-avatar-set/128/15._Astronaut.png",
@@ -59,13 +57,12 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
   const handleUpdate = () => {
     editUserHandler(updatedProfile, socialToken, dataDispatch);
     setEditBtn(!editBtn);
-    toast.success("Post Updated!");
+    toast.success("Profile Updated!");
   };
 
   const updateDetails = (e) => {
     const { name, value } = e.target;
     setUpdatedProfile((prev) => ({ ...prev, [name]: value }));
-    // console.log(updatedProfile);
   };
 
   const { firstName, lastName, link, bio } = updatedProfile;
@@ -86,7 +83,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
                 <div
                   onClick={() => handleAvatar(data)}
                   className={`imgAvatar ${
-                    updatedProfile.profilePic === data && "imgAvatarSelected"
+                    updatedProfile?.profilePic === data && "imgAvatarSelected"
                   }`}
                 >
                   <img
@@ -106,7 +103,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
 
               <label for="file-upload" className="btn-upload">
                 <img
-                  src={updatedProfile.profilePic}
+                  src={updatedProfile?.profilePic}
                   alt=""
                   width="200"
                   className="edit-profile-icon"
@@ -134,7 +131,7 @@ export const EditProfile = ({ setEditBtn, editBtn }) => {
               />
             </label>
             <label className="labelUpdateProfile">
-              last Name:
+              Last Name:
               <input
                 type="text"
                 name="lastName"
