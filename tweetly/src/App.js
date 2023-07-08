@@ -1,8 +1,6 @@
 // import Mockman from "mockman-js";
-import { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import UserFeed from "./components/UserFeed/UserFeed";
 import SignIn from "./Features/SignIn/SignIn";
 import SignUp from "./Features/SignUp/SignUp";
 import { Explore } from "./Features/Explore/Explore";
@@ -14,6 +12,8 @@ import { ToastContainer } from "react-toastify";
 import { useData } from "./Contexts/Data/DataContext";
 import { Home } from "./Features/Home/Home";
 import { AnyProfile } from "./Features/Profile/AnyProfile";
+import { PageNotFound } from "./Features/PageNotFound/PageNotFound";
+import { PostDetails } from "./Features/PostDetails/PostDetails"
 import { Loader } from "./components/Loader/Loader";
 
 function App() {
@@ -58,6 +58,14 @@ function App() {
         }
       />
       <Route
+          path="/post/:_id"
+          element={
+            <MainContainer>
+              <PostDetails />
+            </MainContainer>
+          }
+        />
+      <Route
         path="/profile/:userHandler"
         element={
           <MainContainer>
@@ -68,6 +76,7 @@ function App() {
       <Route path="/signin" element={<SignIn />} />
       <Route path="/signup" element={<SignUp />} />
       {/* <Route path="/mockman" element={<Mockman />} /> */}
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
     </div>
   );
