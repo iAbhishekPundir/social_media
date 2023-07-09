@@ -84,7 +84,7 @@ export const posts = [
     _id: uuid(),
     content: "Adventure",
     likes: {
-      likeCount: 4,
+      likeCount: 3,
       likedBy: [
         {
           _id: uuid(),
@@ -137,13 +137,13 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "mickeymouse@gmail.com",
+        username: "brucewayne@gmail.com",
         text: "Great post!",
       },
       {
         _id: uuid(),
-        username: "spongebob@gmail.com",
-        text: "Wow!",
+        username: "johnsmith@gmail.com",
+        text: "❤❤",
       },
     ],
     username: "abhishekpundir@gmail.com",
@@ -158,7 +158,7 @@ export const posts = [
     _id: uuid(),
     content: "Peace",
     likes: {
-      likeCount: 2,
+      likeCount: 4,
       likedBy: [
         {
           _id: uuid(),
@@ -215,8 +215,8 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "mickeymouse@gmail.com",
-        text: "Great post!",
+        username: "henrycavill@gmail.com",
+        text: "☮☮",
       },
     ],
     username: "abhishekpundir@gmail.com",
@@ -227,4 +227,88 @@ export const posts = [
     createdAt:new Date(2022, 11, 9, 11, 10, 18),
   updatedAt: formatDate(),
   },
+  {
+    _id:uuid(),
+    content:
+      "Be grateful",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    file:"https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8N3x8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    comments:[  {
+      _id: uuid(),
+      username: "johnsmith@gmail.com",
+      text: "awesome!"
+    }],
+    username: "peterparker@gmail.com",
+    profilePic:"https://cdn4.iconfinder.com/data/icons/superhero/400/spiderman.png",
+    userHandler:"peterParker123",
+    createdAt:formatDate(2020, 5, 16, 26, 30),
+    updatedAt: formatDate(),
+  },
+  {
+    _id:uuid(),
+    content:
+      "😊😊",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    file:"https://images.unsplash.com/photo-1495001258031-d1b407bc1776?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTd8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
+    comments:[  {
+      _id: uuid(),
+      username: "johnsmith@gmail.com",
+      text: "awesome!"
+    }],
+    username: "peterparker@gmail.com",
+    profilePic:"https://cdn4.iconfinder.com/data/icons/superhero/400/spiderman.png",
+    userHandler:"peterParker123",
+    createdAt:formatDate(2020, 5, 16, 26, 30),
+    updatedAt: formatDate(),
+  },
+  {
+    _id:uuid(),
+    content:
+      "Thunder",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    file:"https://images.unsplash.com/photo-1431440869543-efaf3388c585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGFya3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    comments:[  {
+      _id: uuid(),
+      username: "johnsmith@gmail.com",
+      text: "awesome!"
+    }],
+    username: "brucewayne@gmail.com",
+    profilePic:"https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-64.png",
+    userHandler:"bruceWayne123",
+    createdAt:formatDate(2020, 5, 16, 26, 30),
+    updatedAt: formatDate(),
+  },
+  {
+    _id:uuid(),
+    content:
+      "✌✌",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    file:"https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvbWVufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+    comments:[  {
+      _id: uuid(),
+      username: "johnsmith@gmail.com",
+      text: "awesome!"
+    }],
+    username: "kritikasingh@gmail.com",
+    profilePic:"https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/girl_avatar_child_kid-64.png",
+    userHandler:"kritikaSingh123",
+    createdAt:formatDate(2020, 5, 16, 26, 30),
+    updatedAt: formatDate(),
+  }
 ];
