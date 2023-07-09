@@ -8,23 +8,23 @@ $ npm install
 $ npm start
 
 # Features  
-UserFeed  
-Explore
-Filtering the posts  
-Add, Update & Delete Post  
-Add & Delete Comment  
-Profile Update  
-Follow / Unfollow  
-Search User  
-Like and Comment on Post  
-Authentication  
-User Signup  
-User Login  
-User Logout
+- UserFeed  
+- Explore
+- Filtering the posts  
+- Add, Update & Delete Post  
+- Add & Delete Comment  
+- Profile Update  
+- Follow / Unfollow  
+- Search User  
+- Like and Comment on Post  
+- Authentication  
+- User Signup  
+- User Login  
+- User Logout
 
 # Tech Stack Used  
-React JS  
-React Context API + useReducer  
-React Router  
-Vanilla CSS for styling  
-MockBee for backend
+- React JS  
+- React Context API + useReducer  
+- React Router  
+- Vanilla CSS for styling  
+- MockBee for backend
