@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #2563eb;
+    color: white;
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 2;
+  }
+  .search-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    position: relative;
+  }
+.searchInput {
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+}
+.searchOutput {
+    position: absolute;
+    top: 100%;
+    left: 80%;
+    /* border: 2px solid #0c4a6e; */
+    border-radius: 4px;
+    background-color: #d1d5db;
+    color: black;
+    height: auto;
+    width: 200px;
+    max-height: 200px;
+    overflow-y: scroll;
+  }
+  .searchResult-item{
+    padding: 6px;
+  }

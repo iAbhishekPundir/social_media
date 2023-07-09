@@ -82,7 +82,7 @@
     padding: 1rem;
   }
   .btn-follow {
-    background-color: #1e3a8a;
+    background-color: #075985;
     border: none;
     padding: 0.6rem;
     margin-top: 0.4rem;
@@ -171,20 +171,20 @@
     }
   
     .btn-follow {
-      background-color: #1e3a8a;
+      background-color: #075985;
       color: white;
       border: none;
       padding: 0.6rem 1.2rem;
       margin-top: 0.1rem;
       margin-left: 0.8rem;
-      border-radius: 0.9rem;
+      border-radius: 0.6rem;
       font-size: 0.9rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
   
     .btn-follow:hover {
-      background-color: #241f61;
+      background-color: #1d4ed8;
     }
   
     .userId {
