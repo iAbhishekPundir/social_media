@@ -31,7 +31,7 @@ export const MenuBar = () => {
   const getActiveStyle = ({ isActive }) => {
     if (isActive) {
       return {
-        color: isActive && " #1976d2 ",
+        color: isActive && " #1e40af ",
         borderRadius: isActive && "0.5rem",
       };
     }
@@ -42,8 +42,6 @@ export const MenuBar = () => {
     navigate("/profile");
   };
 
-  // const socialUser=JSON.parse(localStorage.getItem("socialUser"))
-  // const userHandler=socialUser.userHandler
   return (
     <div className="Menubar">
       <ul className="Menubar-list">

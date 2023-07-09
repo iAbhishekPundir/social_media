@@ -36,7 +36,7 @@ export const Home = () => {
   );
 
   const sortPostsByLikes = [...likedPosts]?.sort(
-    (a, b) => a.likes.likedBy.length - b.likes.likedBy.length
+    (a, b) => b.likes.likedBy.length - a.likes.likedBy.length
   );
   const combinedData = [...loggedInUserPosts.reverse(), ...homePosts].reverse();
 

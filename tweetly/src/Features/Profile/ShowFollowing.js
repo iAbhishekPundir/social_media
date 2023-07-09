@@ -60,7 +60,6 @@ export const ShowFollowing = ({ setShowFollowing,foundUser }) => {
                 {data?.firstName} {data?.lastName}
               </p>
               <div className="padding-5">
-                {/* <button className="profile-edit-btn">Edit</button> */}
 
                 {loggedInUser.username!== data.username && (foundUser?.following?.some(
                   (el) => el.username === data?.username
